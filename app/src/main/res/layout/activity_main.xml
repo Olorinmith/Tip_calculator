@@ -7,16 +7,24 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cost_of_service"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:hint="@string/cost_of_service"
-        android:inputType="numberDecimal"
-        android:textColorHint="#8D6E63"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cost_of_service_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColorHint="#546E7A"
+            tools:ignore="TextContrastCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/service_question"
@@ -62,7 +70,8 @@
         android:text="@string/round_up_tip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tip_options"
-        app:layout_constraintTop_toBottomOf="@id/tip_options" />
+        app:layout_constraintTop_toBottomOf="@id/tip_options"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/calculate_button"
