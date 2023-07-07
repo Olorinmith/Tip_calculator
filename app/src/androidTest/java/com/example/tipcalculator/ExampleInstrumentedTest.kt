@@ -26,6 +26,6 @@ class CalculatorTests {
         onView(withId(R.id.calculate_button))
             .perform(click())
         onView(withId(R.id.tip_result))
-            .check(matches(withText(containsString("$10.00"))))
+            .check(matches(withText(containsString("10,00"))))
     }
 }
