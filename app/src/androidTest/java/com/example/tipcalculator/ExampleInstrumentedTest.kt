@@ -19,13 +19,87 @@ class CalculatorTests {
     @get:Rule()
     val activity = ActivityScenarioRule(MainActivity::class.java)
     @Test
-    fun calculate_20_percent_tip() {
+    fun calculate_20_percent_tip_round() {
         onView(withId(R.id.cost_of_service_edit_text))
-            .perform(typeText("50.00"))
+            .perform(typeText("50"))
             .perform(ViewActions.closeSoftKeyboard())
         onView(withId(R.id.calculate_button))
             .perform(click())
         onView(withId(R.id.tip_result))
             .check(matches(withText(containsString("10,00"))))
+    }
+    @Test
+    fun calculate_20_percent_tip() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("39"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.round_up_switch))
+            .perform(click())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("7,80"))))
+    }
+    @Test
+    fun calculate_18_percent_tip_round() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("50"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_eighteen_percent))
+            .perform(click())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("9,00"))))
+    }
+    @Test
+    fun calculate_18_percent_tip() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("39"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_eighteen_percent))
+            .perform(click())
+        onView(withId(R.id.round_up_switch))
+            .perform(click())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("7,02"))))
+    }
+    @Test
+    fun calculate_15_percent_tip_round() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("50"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_fifteen_percent))
+            .perform(click())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("8,00"))))
+    }
+    @Test
+    fun calculate_15_percent_tip() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText("39"))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.option_fifteen_percent))
+            .perform(click())
+        onView(withId(R.id.round_up_switch))
+            .perform(click())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString("5,85"))))
+    }
+    @Test
+    fun clear_cost_tip() {
+        onView(withId(R.id.cost_of_service_edit_text))
+            .perform(typeText(""))
+            .perform(ViewActions.closeSoftKeyboard())
+        onView(withId(R.id.calculate_button))
+            .perform(click())
+        onView(withId(R.id.tip_result))
+            .check(matches(withText(containsString(""))))
     }
 }
